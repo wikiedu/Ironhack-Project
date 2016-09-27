@@ -1,0 +1,10 @@
+<h1>List of locations:</h1>
+<ul>
+  <% @locations.each do |location| %>
+    <li>
+      <%= location.name %> | <%= link_to 'Edit', edit_client_location_path(location.client_id, location.id), method: :get %> | <%= link_to 'X', client_location_path(location.client_id, location.id), method: :delete %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Add new Location', new_client_location_path, method: :get %>

@@ -1,0 +1,26 @@
+<h1>Create a new Location</h1>
+
+<%= form_for @location, url: client_locations_path(params[:client_id]) do |f| %>
+  <%= f.label :name %>:
+  <%= f.text_field :name %><br />
+
+  <%= f.label :direction %>:
+  <%= f.text_field :direction %><br />
+
+  <%= f.label :postalCode %>:
+  <%= f.text_field :postalCode %><br />
+
+  <%= f.label :hourIn %>:
+  <%= f.time_field :hourIn %><br />
+
+  <%= f.label :hourOut %>:
+  <%= f.time_field :hourOut %><br />
+
+  <%= f.label :contact %>:
+  <%= f.text_field :contact %><br />
+
+  <%= f.label :route %>:
+  <%= f.text_field :route %><br />
+
+  <%= f.submit %>
+<% end %>

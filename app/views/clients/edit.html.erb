@@ -1,0 +1,11 @@
+<h1>Edit a Client</h1>
+
+<%= form_for @current_client do |f| %>
+  <%= f.label :name %>:
+  <%= f.text_field :name %><br />
+
+  <%= f.label :contact %>:
+  <%= f.text_field :contact %><br />
+
+  <%= f.submit %>
+<% end %>
