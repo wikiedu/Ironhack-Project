@@ -40,6 +40,11 @@ class LocationsController < ApplicationController
     redirect_to client_locations_path
   end
 
+def import
+  Location.import(params[:file])
+  redirect_to root_url, notice: "Data imported correctly"
+end
+
   private
   def locations_params
     params.require(:location).permit(:name, :direction, :postalCode, :hourIn, :hourOut, :contact, :route).merge(client_id: params[:client_id])

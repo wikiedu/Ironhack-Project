@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   get '/', to: 'welcome#index'
 
   resources :clients do
-    resources :locations 
+    resources :locations do
+      collection { post :import}
+    end
   end
 
   resources :expeditions

@@ -38,3 +38,12 @@
 </div>
 
 <%= link_to 'Add new Location', new_client_location_path, method: :get %>
+
+<div>
+<h4>Import:</h4>
+  <%= form_tag import_client_locations_path(params[:client_id]), multipart: true do %>
+    <%= file_field_tag :file%>
+    <%= submit_tag "Import CSV" %>
+  <% end %>
+  <br>
+  </div>
