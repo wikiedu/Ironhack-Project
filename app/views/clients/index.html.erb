@@ -1,10 +1,10 @@
 <h1>List of clients:</h1>
-<ul>
+<div class="div-scroll">
   <% @clients.each do |client| %>
     <li>
       <%= link_to client.name, client_locations_path(client.id), method: :get%> | <%= link_to 'Edit', edit_client_path(client.id), method: :get %> | <%= link_to 'X', client_path(client.id), method: :delete %>
     </li>
   <% end %>
-</ul>
+</div>
 
 <%= link_to 'Add new Client', new_client_path, method: :get %>
