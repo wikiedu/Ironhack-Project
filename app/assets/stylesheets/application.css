@@ -22,6 +22,14 @@
   overflow: scroll;
 }
 
+#appName {
+  margin-top: 2px;
+  text-align: center;
+}
+
+#model-name {
+  margin-top: 5px;
+}
 /*.fixed-header {
   position: fixed;
   height: 100px;
