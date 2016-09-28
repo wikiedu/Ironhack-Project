@@ -21,3 +21,8 @@
   height: 70px;
   overflow: scroll;
 }
+
+/*.fixed-header {
+  position: fixed;
+  height: 100px;
+}*/

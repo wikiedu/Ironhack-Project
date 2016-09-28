@@ -7,10 +7,4 @@ class Location < ApplicationRecord
   validates :client_id, presence: true
 
 
-  def self.import(file)
-    CSV.foreach(file.path, headers: true) do |row|
-        Location.create! row.to_hash
-      end
-  end
-  
 end

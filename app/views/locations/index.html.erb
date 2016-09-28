@@ -1,5 +1,5 @@
 <h1>List of locations:</h1>
-<div class="div-scroll-table">
+<div>
   <table class="table table-striped table-bordered">
   <thead class="thead-inverse">
     <tr>
@@ -42,8 +42,8 @@
 <div>
 <h4>Import:</h4>
   <%= form_tag import_client_locations_path(params[:client_id]), multipart: true do %>
-    <%= file_field_tag :file%>
-    <%= submit_tag "Import CSV" %>
+    <%= file_field_tag :file%> <%= submit_tag "Import file" %>
+
   <% end %>
   <br>
-  </div>
+</div>

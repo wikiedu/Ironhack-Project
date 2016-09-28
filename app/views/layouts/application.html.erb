@@ -9,9 +9,7 @@
   </head>
 
   <body>
-    <header>
-      <div class="container">
-        <div class="row">
+  <nav class="navbar navbar-default navbar-fixed-top on">
           <div class="col-md-3">
             <button type="button" class="btn btn-default">TRY IT</button>
           </div>
@@ -28,10 +26,10 @@
               <%= link_to 'Sign Up', new_user_registration_path, method: :get %>
             <% end %>
           </div>
+  </nav>
 
-        </div>
-      </div>
-    </header>
+
+
 
     <%= yield %>
   </body>

@@ -1,3 +1,4 @@
+
 class LocationsController < ApplicationController
 
   before_action :load_client
@@ -40,10 +41,25 @@ class LocationsController < ApplicationController
     redirect_to client_locations_path
   end
 
-def import
-  Location.import(params[:file])
-  redirect_to root_url, notice: "Data imported correctly"
-end
+  def import
+    CSV.foreach(params[:file].path, col_sep:  ";") do |row|
+      id = row[0]
+      name = row[1]
+      direction = row[2]
+      postalCode = row[3]
+      hourIn = row[4]
+      hourOut = row[5]
+      contact = row[6]
+      route = row[7]
+      if Location.exists?(id)
+        Location.find(id).update_attributes(:name => name, :direction => direction, :postalCode => postalCode, :hourIn => hourIn, :hourOut => hourOut, :contact => contact, :route => route)
+
+      else
+        Location.create(:name => name, :direction => direction, :postalCode => postalCode, :hourIn => hourIn, :hourOut => hourOut, :contact => contact, :route => route, :client_id => params[:client_id])
+      end
+    end
+    redirect_to client_locations_path, notice: "Data imported correctly"
+  end
 
   private
   def locations_params

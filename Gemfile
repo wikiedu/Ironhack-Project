@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 # extras de Edu
 gem 'bullet', '~> 5.4'
+gem 'roo', '~> 2.4.0'
 # necesita rails 4.2.6
 # gem 'hobo', '~> 2.2', '>= 2.2.6'
 gem 'carrierwave', '~> 0.11.2'
@@ -15,7 +16,6 @@ gem 'slim', '~> 3.0', '>= 3.0.7'
 gem 'react-rails', '~> 1.8', '>= 1.8.2'
 gem 'cocoon', '~> 1.2', '>= 1.2.9'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
-gem 'axlsx_rails', '~> 0.5.0'
 gem 'prawn', '~> 2.1'
 gem 'mongo', '~> 2.3'
 gem 'gmaps4rails', '~> 2.1', '>= 2.1.2'
