@@ -1,0 +1,44 @@
+<h1 id="model-name">List of Expeditions:</h1>
+<div>
+  <table class="table table-striped table-bordered">
+  <thead class="thead-inverse">
+    <tr>
+      <th>Edit</th>
+      <th>Delete</th>
+      <th>Origin Location</th>
+      <th>Destination Location</th>
+      <th>Date</th>
+      <th>Weight</th>
+      <th>State</th>
+    </tr>
+  </thead>
+  <tbody>
+
+
+    <% @expeditions.each do |expedition| %>
+      <tr>
+        <td><%= link_to 'Edit', edit_client_expedition_path(@client, expedition.id), method: :get %></td>
+        <td><%= link_to 'X', client_expedition_path(@client, expedition.id), method: :delete %></td>
+        <td><%= @client.locations.find_by(id: expedition.origin_location_id).name %></td>
+        <td><%= @client.locations.find_by(id: expedition.destination_location_id).name %></td>
+        <td><%= expedition.date %></td>
+        <td><%= expedition.weight %></td>
+        <td><%= expedition.state %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+
+</div>
+
+
+
+<div class="col-md-6">
+<h4>Import:</h4>
+<%= link_to 'Add new Expedition', new_client_expedition_path(@client), method: :get %>
+  <%= form_tag import_client_expeditions_path(@client), multipart: true do %>
+    <%= file_field_tag :file%> <%= submit_tag "Import file" %>
+    <br>
+  <% end %>
+  <br>
+</div>

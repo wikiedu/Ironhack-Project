@@ -43,19 +43,19 @@ class LocationsController < ApplicationController
 
   def import
     CSV.foreach(params[:file].path, col_sep:  ";") do |row|
-      id = row[0]
+      internal_code = row[0]
       name = row[1]
       direction = row[2]
-      postalCode = row[3]
-      hourIn = row[4]
-      hourOut = row[5]
+      postal_code = row[3]
+      hour_in = row[4]
+      hour_out = row[5]
       contact = row[6]
       route = row[7]
-      if Location.exists?(id)
-        Location.find(id).update_attributes(:name => name, :direction => direction, :postalCode => postalCode, :hourIn => hourIn, :hourOut => hourOut, :contact => contact, :route => route)
+      if Location.find_by(internal_code: internal_code)
+        Location.find_by(internal_code: internal_code).update_attributes(:name => name, :internal_code => internal_code, :direction => direction, :postal_code => postal_code, :hour_in => hour_in, :hour_out => hour_out, :contact => contact, :route => route)
 
       else
-        Location.create(:name => name, :direction => direction, :postalCode => postalCode, :hourIn => hourIn, :hourOut => hourOut, :contact => contact, :route => route, :client_id => params[:client_id])
+        Location.create(:name => name, :internal_code => internal_code, :direction => direction, :postal_code => postal_code, :hour_in => hour_in, :hour_out => hour_out, :contact => contact, :route => route, :client_id => params[:client_id])
       end
     end
     redirect_to client_locations_path, notice: "Data imported correctly"
@@ -63,7 +63,7 @@ class LocationsController < ApplicationController
 
   private
   def locations_params
-    params.require(:location).permit(:name, :direction, :postalCode, :hourIn, :hourOut, :contact, :route).merge(client_id: params[:client_id])
+    params.require(:location).permit(:name, :internal_code, :direction, :postal_code, :hour_in, :hour_ut, :contact, :route).merge(client_id: params[:client_id])
   end
 
   def load_client

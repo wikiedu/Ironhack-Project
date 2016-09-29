@@ -1,0 +1,26 @@
+<h1>Edit an Expedition</h1>
+
+
+
+
+<%= form_for @current_expedition, url: client_expeditions_path(@client) do |f| %>
+
+
+
+  <%= f.label :origin_location %>:
+  <%= f.select :origin_location_id, @client.locations.collect { |p| [ p.name, p.id ] }, include_blank: true %> <br>
+
+  <%= f.label :destination_location %>:
+  <%= f.select :destination_location_id, @client.locations.collect { |p| [ p.name, p.id ] }, include_blank: true %> <br>
+
+  <%= f.label :date %>:
+  <%= f.date_field :date %><br />
+
+  <%= f.label :weight %>:
+  <%= f.text_field :weight %><br />
+
+  <%= f.label :state %>:
+  <%= f.text_field :state %><br />
+
+  <%= f.submit %>
+<% end %>

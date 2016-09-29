@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160926085634) do
+ActiveRecord::Schema.define(version: 20160929113459) do
 
   create_table "clients", force: :cascade do |t|
     t.integer  "user_id"
@@ -22,26 +22,32 @@ ActiveRecord::Schema.define(version: 20160926085634) do
   end
 
   create_table "expeditions", force: :cascade do |t|
-    t.integer  "location_id"
-    t.string   "sendingType"
+    t.integer  "origin_location_id"
+    t.integer  "destination_location_id"
+    t.string   "sending_type"
     t.integer  "weight"
     t.string   "state"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["location_id"], name: "index_expeditions_on_location_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.date     "date"
+    t.integer  "client_id"
+    t.index ["client_id"], name: "index_expeditions_on_client_id"
+    t.index ["destination_location_id"], name: "index_expeditions_on_destination_location_id"
+    t.index ["origin_location_id"], name: "index_expeditions_on_origin_location_id"
   end
 
   create_table "locations", force: :cascade do |t|
     t.integer  "client_id"
+    t.string   "internal_code"
     t.string   "name"
     t.string   "direction"
-    t.string   "postalCode"
-    t.time     "hourIn"
-    t.time     "hourOut"
+    t.string   "postal_code"
+    t.time     "hour_in"
+    t.time     "hour_out"
     t.string   "contact"
     t.integer  "route"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.index ["client_id"], name: "index_locations_on_client_id"
   end
 
