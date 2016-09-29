@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 # extras de Edu
 gem 'bullet', '~> 5.4'
 gem 'roo', '~> 2.4.0'
+gem 'rqrcode'
+gem 'rqrcode_png'
 # necesita rails 4.2.6
 # gem 'hobo', '~> 2.2', '>= 2.2.6'
 gem 'carrierwave', '~> 0.11.2'
@@ -54,6 +56,7 @@ gem 'jbuilder', '~> 2.5'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'rspec-rails', '~> 3.5'
 end
 
 group :development do

@@ -15,3 +15,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+$('.qr-generation').on('click', function(){
+  console.log('helloooo')
+  })

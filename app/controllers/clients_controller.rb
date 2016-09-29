@@ -39,6 +39,7 @@ class ClientsController < ApplicationController
   end
 
   private
+
   def clients_params
     params.require(:client).permit(:name, :contact)
   end
