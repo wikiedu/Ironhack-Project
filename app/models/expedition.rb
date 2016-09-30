@@ -5,8 +5,15 @@ class Expedition < ApplicationRecord
 
     STATE_UNDELIVERED ="undelivered"
     STATE_DELIVERED ="delivered"
-    STATE_PICKEDUP ="pickedup"
+    STATE_PICKEDUP ="picked_up"
     STATE_DELIVERY ="delivery"
     STATE_CANCELED ="canceled"
+
+    before_save :default_values
+  def default_values
+    self.state ||= STATE_UNDELIVERED
+  end
+
+
 
 end

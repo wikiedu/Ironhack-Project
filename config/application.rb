@@ -1,6 +1,8 @@
 require_relative 'boot'
 require 'roo'
 require 'csv'
+require 'rqrcode'
+require 'rqrcode_png'
 require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems

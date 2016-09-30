@@ -34,7 +34,7 @@ class ExpeditionsController < ApplicationController
 
   def update
     @current_expedition = Expedition.find_by(id: params[:id])
-    if @current_expedition.update_attributes(expedition_params)
+    if @current_expedition.update_attributes(expeditions_params_update_state)
       redirect_to client_expeditions_path(@client.id)
     else
       render 'edit'
@@ -70,8 +70,13 @@ class ExpeditionsController < ApplicationController
 
   private
   def expeditions_params
+    params.require(:expedition).permit(:origin_location_id, :destination_location_id, :date, :weight).merge(client_id: @client.id)
+  end
+
+  def expeditions_params_update_state
     params.require(:expedition).permit(:origin_location_id, :destination_location_id, :date, :weight, :state).merge(client_id: @client.id)
   end
+
 
   def load_client
     @client = Client.find(params[:client_id])

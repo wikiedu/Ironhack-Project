@@ -3,7 +3,7 @@
 
 
 
-<%= form_for @current_expedition, url: client_expeditions_path(@client) do |f| %>
+<%= form_for @current_expedition, method: :patch, url: client_expedition_path(@client, params[:id]) do |f| %>
 
 
 
