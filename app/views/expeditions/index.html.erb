@@ -3,6 +3,7 @@
   <table class="table table-striped table-bordered">
   <thead class="thead-inverse">
     <tr>
+      <th>View</th>
       <th>Edit</th>
       <th>Delete</th>
       <th>QR Generate</th>
@@ -18,6 +19,7 @@
 
     <% @expeditions.each do |expedition| %>
       <tr>
+        <td><%= link_to 'View', client_expedition_path(@client, expedition.id), method: :get %></td>
         <td><%= link_to 'Edit', edit_client_expedition_path(@client, expedition.id), method: :get %></td>
         <td><%= link_to 'X', client_expedition_path(@client, expedition.id), method: :delete %></td>
         <td class="qr-generation">QR</td>
@@ -43,4 +45,8 @@
     <br>
   <% end %>
   <br>
+</div>
+
+<div class="col-md-6">
+  <%= button_to('Print QR Expeditions', client_print_path(@client), method: :get, target: "_blank", class: 'btn btn-default') %>
 </div>

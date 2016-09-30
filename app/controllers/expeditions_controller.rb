@@ -22,6 +22,10 @@ class ExpeditionsController < ApplicationController
     end
   end
 
+  def show
+    @expedition = Expedition.find_by(id: params[:id])
+  end
+
 
 
   def edit
