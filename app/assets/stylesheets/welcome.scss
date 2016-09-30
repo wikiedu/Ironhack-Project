@@ -11,3 +11,12 @@
 #landing-image {
   height: 300px;
 }
+
+@media print {
+  nav * {
+    visibility: hidden;
+  }
+  head * {
+    visibility: hidden;
+  }
+}

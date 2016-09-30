@@ -24,7 +24,6 @@ class WelcomeController < ApplicationController
                       module_size: 4)
         @svg_array.push(svg)
         }
-
         @single_qr = false
     end
 

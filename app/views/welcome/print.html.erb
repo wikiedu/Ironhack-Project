@@ -1,4 +1,4 @@
-
+<body onload="window.print()">
 <% if @single_qr %>
   <div class="col-md-4">
     <h4>  <%= @client.locations.find_by(id: @expedition.destination_location_id).name%></h4>

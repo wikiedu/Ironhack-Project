@@ -5,7 +5,7 @@
 <div class="div-scroll">
   <% @clients.each do |client| %>
     <li>
-      <%= link_to client.name, client_locations_path(client.id), method: :get%> | <%= link_to 'Edit', edit_client_path(client.id), method: :get %> | <%= link_to 'X', client_path(client.id), method: :delete %>
+      <%= link_to client.name, client_locations_path(client.id), method: :get%> | <%= link_to 'Edit', edit_client_path(client.id), method: :get %> | <%= link_to 'X', client_path(client.id), method: :delete,data: {confirm: "Are you sure?"}%>
     </li>
   <% end %>
 </div>
