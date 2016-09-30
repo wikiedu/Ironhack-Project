@@ -22,7 +22,7 @@
         <td><%= link_to 'View', client_expedition_path(@client, expedition.id), method: :get %></td>
         <td><%= link_to 'Edit', edit_client_expedition_path(@client, expedition.id), method: :get %></td>
         <td><%= link_to 'X', client_expedition_path(@client, expedition.id), method: :delete %></td>
-        <td class="qr-generation"><%= link_to('QR', client_print_path(@client), method: :get, target: "_blank") %></td>
+        <td class="qr-generation"><%= link_to('QR', client_expedition_print_path(@client, expedition.id), method: :get, target: "_blank") %></td>
         <td><%= @client.locations.find_by(id: expedition.origin_location_id).name %></td>
         <td><%= @client.locations.find_by(id: expedition.destination_location_id).name %></td>
         <td><%= expedition.date %></td>

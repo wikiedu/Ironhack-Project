@@ -1,0 +1,18 @@
+
+<% if @single_qr %>
+  <div class="col-md-4">
+    <h4>  <%= @client.locations.find_by(id: @expedition.destination_location_id).name%></h4>
+    <h5>  <%= @client.locations.find_by(id: @expedition.destination_location_id).direction%></h5> <br>
+    <%= raw @svg%>
+  </div>
+<% else %>
+      <% @expeditions.each do |expedition| %>
+        <div class="col-md-4">
+          <h4>  <%= @client.locations.find_by(id: expedition.destination_location_id).name%></h4>
+          <h5>  <%= @client.locations.find_by(id: expedition.destination_location_id).direction%></h5> <br>
+          <%= raw @svg_array[@counter]%>
+          <% @counter = @counter +1 %>
+        </div>
+      <% end %>
+
+  <% end %>

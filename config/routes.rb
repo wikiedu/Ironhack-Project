@@ -10,6 +10,7 @@ Rails.application.routes.draw do
         collection { post :import }
       end
       resources :expeditions do
+        get '/print', to: 'welcome#print'
         collection { post :import }
       end
     end
