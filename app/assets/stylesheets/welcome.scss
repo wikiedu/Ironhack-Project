@@ -3,15 +3,30 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
 
-#appName {
-  font-family: raleway-bold;
+.titles {
+  margin-top: 200px;
+
 }
 
+#title {
+  margin-top: 2px;
+  text-align: center;
+  font-family: raleway-bold;
+  color: white;
+}
 #landing-image {
+    background-image: url(/assets/landing.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    height: 400px;
+}
+#web-app-image {
   height: 300px;
 }
-
 @media print {
   nav * {
     visibility: hidden;
@@ -19,4 +34,8 @@
   head * {
     visibility: hidden;
   }
+}
+#degraded-background {
+  background-image: url(/assets/degraded.jpg);
+
 }

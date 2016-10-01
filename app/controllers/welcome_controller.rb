@@ -1,9 +1,12 @@
 class WelcomeController < ApplicationController
-    before_action :load_client
+
 
   def index
   end
+
+
   def print
+    load_client()
     if params[:expedition_id]
       original_url = request.base_url + "/clients/#{@client.id}/expeditions/#{params[:expedition_id]}"
       qr = RQRCode::QRCode.new( original_url)

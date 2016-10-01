@@ -12,9 +12,11 @@
  *
  *= require_tree .
  *= require_self
+ *= require font-awesome
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
 
 .div-scroll {
   width: 100%;
@@ -25,10 +27,13 @@
 #appName {
   margin-top: 2px;
   text-align: center;
+  font-family: raleway-bold;
 }
-
 #model-name {
   margin-top: 5px;
+}
+.color {
+  color: #00B5E2
 }
 /*.fixed-header {
   position: fixed;

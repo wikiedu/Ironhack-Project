@@ -6,6 +6,7 @@ gem 'roo', '~> 2.4.0'
 gem 'rqrcode'
 gem 'rqrcode_png'
 # necesita rails 4.2.6
+gem "font-awesome-rails"
 # gem 'hobo', '~> 2.2', '>= 2.2.6'
 gem 'carrierwave', '~> 0.11.2'
 gem 'kaminari', '~> 0.17.0'

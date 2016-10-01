@@ -20,7 +20,7 @@
   <%= f.text_field :weight %><br />
 
   <%= f.label :state %>:
-  <%= f.text_field :state %><br />
+  <%= f.select :state, @states.each { |state| state }, include_blank: true %><br />
 
   <%= f.submit %>
 <% end %>

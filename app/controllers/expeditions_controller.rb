@@ -30,6 +30,8 @@ class ExpeditionsController < ApplicationController
 
   def edit
     @current_expedition = Expedition.find_by(id: params[:id])
+    @states = ["delivered", "picked_up", "canceled"]
+
   end
 
   def update

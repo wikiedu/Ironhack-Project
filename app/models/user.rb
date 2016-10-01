@@ -23,5 +23,5 @@ class User < ApplicationRecord
   def client?
     role == ROLE_CLIENT
   end
-  
+
 end
