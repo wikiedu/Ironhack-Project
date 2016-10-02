@@ -3,6 +3,10 @@ class Expedition < ApplicationRecord
     belongs_to :destination_location, class_name: Location, foreign_key: :destination_location_id
     belongs_to :client
 
+    validates :weight, :numericality {:less_than => 25}
+    validates :state, :presence  => true
+    validates :date, :presence => true
+
     STATE_UNDELIVERED ="undelivered"
     STATE_DELIVERED ="delivered"
     STATE_PICKEDUP ="picked_up"
