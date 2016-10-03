@@ -1,22 +1,24 @@
-<div class="row">
+  <div class="row">
 
+    <div class="col-md-6">
+      <h1>Expedition nº:  <%= @expedition.id %></h1>
+      <h4>Origin Location:  <%= @client.locations.find_by(id: @expedition.origin_location_id).name %></h4>
+      <h4>Destination Location:  <%= @client.locations.find_by(id: @expedition.destination_location_id).name %></h4>
+      <h4>Date:  <%= @expedition.date %></h4>
+      <h4>Weight:  <%= @expedition.weight %></h4>
+      <h4>State:  <%= @expedition.state %></h4>
+    </div>
 
-  <div class="col-md-6">
-    <h1>Expedition nº:  <%= @expedition.id %></h1>
-    <h4>Origin Location:  <%= @client.locations.find_by(id: @expedition.origin_location_id).name %></h4>
-    <h4>Destination Location:  <%= @client.locations.find_by(id: @expedition.destination_location_id).name %></h4>
-    <h4>Date:  <%= @expedition.date %></h4>
-    <h4>Weight:  <%= @expedition.weight %></h4>
-    <h4>State:  <%= @expedition.state %></h4>
   </div>
 
-  <div class="col-md-2">
-    <%= link_to('Delivered', client_expedition_path(@client, @expedition, expedition: {state: 'delivered'}), method: :patch, class: 'btn btn-default btn-lg') %>
+  <div class="row">
+      <%= link_to('Delivered', client_expedition_path(@client, @expedition, expedition: {state: 'delivered'}), method: :patch, class: 'btn btn-default btn-lg btn-success') %>
   </div>
-  <div class="col-md-2">
-    <%= link_to('Picked Up', client_expedition_path(@client, @expedition, expedition: {state: 'picked_up'}), method: :patch, class: 'btn btn-default btn-lg') %>
+
+  <div class="row">
+      <%= link_to('Picked Up', client_expedition_path(@client, @expedition, expedition: {state: 'picked_up'}), method: :patch, class: 'btn btn-default btn-lg btn-warning') %>
   </div>
-  <div class="col-md-2">
-    <%= link_to('Canceled', client_expedition_path(@client, @expedition, expedition: {state: 'canceled'}), method: :patch, class: 'btn btn-default btn-lg') %>
-  </div>
-</div>
+
+    <div class="row">
+        <%= link_to('Canceled', client_expedition_path(@client, @expedition, expedition: {state: 'canceled'}), method: :patch, class: 'btn btn-default btn-lg btn-danger') %>
+    </div>

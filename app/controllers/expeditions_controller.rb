@@ -57,7 +57,7 @@ class ExpeditionsController < ApplicationController
   end
 
   def import
-    CSV.foreach(params[:file].path, col_sep:  ";") do |row|
+    CSV.foreach(params[:file].path, col_sep:  ";", headers: true) do |row|
       origin_location = row[0]
       destination_location = row[1]
       weight = row[2]

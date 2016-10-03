@@ -4,7 +4,7 @@
   <% if current_user.admin? %>
     <div class="col-md-6">
     <h4>Import:</h4>
-    <%= link_to 'Add new Location', new_client_location_path, method: :get %>
+    <%= link_to 'Add new Location', new_client_location_path, method: :get, class: 'btn btn-primary btn-sm' %>
       <%= form_tag import_client_locations_path(@client), multipart: true do %>
         <%= file_field_tag :file%> <%= submit_tag "Import file" %>
         <br>
@@ -15,8 +15,8 @@
 
   <div class="col-md-6">
     <h3>Expeditions:</h3>
-    <%= link_to 'See all the expeditions', client_expeditions_path(client_id: @client.id), method: :get %>
-    <%= button_to('Go to Clients', clients_path, method: :get, class: 'btn btn-default') %>
+    <%= link_to 'See all the expeditions', client_expeditions_path(client_id: @client.id), method: :get, class: 'btn btn-primary btn-xs'%>
+    <%= button_to('Go to Clients', clients_path, method: :get, class: 'btn btn-primary') %>
     <br>
   </div>
 
@@ -24,7 +24,7 @@
 
 
 <div>
-  <table class="table table-striped table-bordered">
+  <table class="table table-striped table-bordered table-condensed">
   <thead class="thead-inverse">
     <tr>
       <% if current_user.admin? %>
