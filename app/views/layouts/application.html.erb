@@ -10,21 +10,22 @@
   <body <%= @body_onload ? "onload='#{@body_onload}'".html_safe : "" %>>
     <nav class="navbar navbar-default">
       <div class="container-fluid">
-        <div class="col-md-3">
-          <button type="button" class="btn btn-default">TRY IT</button>
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">Trazapp</a>
         </div>
-        <div class="col-md-6 ">
-          <a href="/"><h2 id="appName">Trazapp</h2></a>
-        </div>
-        <div class="col-md-3">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active"><a href="/">Home</a></li>
+          <li><a href="/">Page 1</a></li>
+          <li><a href="/">Page 2</a></li>
           <% if current_user %>
-            <%= current_user.email%>
-            <%= link_to('Log Out',  destroy_user_session_path, method: :delete, class: 'btn btn-default btn-xs') %> |
-            <%= link_to 'Dashboard',  clients_path, method: :get %>
+            <li><%= link_to(current_user.email,  clients_path, method: :get, class: 'glyphicon glyphicon-user') %></li>
+            <li><%= link_to('Log-Out',  destroy_user_session_path, method: :delete, class: 'glyphicon glyphicon-log-out') %></li>
           <% else %>
-            <%= link_to 'Log In', new_user_session_path, method: :get %>
+            <li><%= link_to('Log-In',  new_user_session_path, method: :get, class: 'glyphicon glyphicon-log-in') %></li>
           <% end %>
-        </div>
+          <!-- <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> -->
+        </ul>
       </div>
     </nav>
     <div class="container">

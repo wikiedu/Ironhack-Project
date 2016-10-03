@@ -26,11 +26,15 @@
 
 #appName {
   margin-top: 2px;
-  text-align: center;
+  text-align: left;
   font-family: raleway-bold;
 }
 #model-name {
   margin-top: 5px;
+}
+
+#user_info {
+  text-align: right;
 }
 .color {
   color: #00B5E2
