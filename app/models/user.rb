@@ -8,6 +8,7 @@ class User < ApplicationRecord
   ROLE_ADMIN ="admin"
   ROLE_TRANSPORTER = "transporter"
   ROLE_CLIENT = "client"
+  
   def clients
     company.clients
   end

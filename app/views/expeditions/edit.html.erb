@@ -1,12 +1,6 @@
 <h1>Edit an Expedition</h1>
 
-
-
-
 <%= form_for @current_expedition, method: :patch, url: client_expedition_path(@client, params[:id]) do |f| %>
-
-
-
   <%= f.label :origin_location %>:
   <%= f.select :origin_location_id, @client.locations.collect { |p| [ p.name, p.id ] }, include_blank: true %> <br>
 

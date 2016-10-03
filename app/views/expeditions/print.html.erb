@@ -1,0 +1,8 @@
+<% @body_onload = "window.print()" %>
+<% @expeditions.each do |expedition| %>
+  <div class="col-md-4">
+    <h4><%= expedition.destination_location.name %></h4>
+    <h5><%= expedition.destination_location.direction %></h5>
+    <%= raw expedition_svg(@client, expedition) %>
+  </div>
+<% end %>

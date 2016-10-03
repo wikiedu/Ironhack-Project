@@ -4,9 +4,9 @@ class ExpeditionsController < ApplicationController
 
   def index
     @expeditions = @client.expeditions
-      if params[:location_id]
-        @expeditions = @expeditions.where("origin_location_id = ? OR destination_location_id = ?", params[:location_id], params[:location_id])
-      end
+    if params[:location_id]
+      @expeditions = @expeditions.where("origin_location_id = ? OR destination_location_id = ?", params[:location_id], params[:location_id])
+    end
   end
 
   def new
@@ -26,12 +26,16 @@ class ExpeditionsController < ApplicationController
     @expedition = Expedition.find_by(id: params[:id])
   end
 
-
+  def print
+    @expeditions = Expedition.all
+    if params[:id]
+      @expeditions = @expeditions.where(id: params[:id])
+    end
+  end
 
   def edit
     @current_expedition = Expedition.find_by(id: params[:id])
-    @states = ["delivered", "picked_up", "canceled"]
-
+    @states = [Expedition::STATE_DELIVERED, Expedition::STATE_PICKEDUP, Expedition::STATE_CANCELED]
   end
 
   def update
@@ -52,21 +56,16 @@ class ExpeditionsController < ApplicationController
 
   def import
     CSV.foreach(params[:file].path, col_sep:  ";") do |row|
-      internal_code = row[0]
-      name = row[1]
-      direction = row[2]
-      postal_code = row[3]
-      hour_in = row[4]
-      hour_out = row[5]
-      contact = row[6]
-      route = row[7]
-      if Location.find_by(internal_code: internal_code)
-        Location.find_by(internal_code: internal_code).update_attributes(:name => name, :internal_code => internal_code, :direction => direction, :postal_code => postal_code, :hour_in => hour_in, :hour_out => hour_out, :contact => contact, :route => route)
-      else
-        Location.create(:name => name, :internal_code => internal_code, :direction => direction, :postal_code => postal_code, :hour_in => hour_in, :hour_out => hour_out, :contact => contact, :route => route, :client_id => params[:client_id])
+      origin_location = row[0]
+      destination_location = row[1]
+      weight = row[2]
+      state = row[3]
+      date = row[4]
+      if @client.locations.find_by(name: origin_location) && @client.locations.find_by(name: destination_location)
+        Expedition.create(:origin_location_id => @client.locations.find_by(name: origin_location).id, :destination_location_id => @client.locations.find_by(name: destination_location).id, :weight => weight, :state => state, :date => date, :client_id => @client.id)
       end
     end
-    redirect_to client_locations_path, notice: "Expeditions imported correctly"
+    redirect_to client_expeditions_path(@client.id), notice: "Expeditions imported correctly"
   end
 
 
