@@ -1,5 +1,7 @@
 class ClientsController < ApplicationController
 
+  before_action :transporter_redirect, except: :index
+
   def index
     @clients = current_user.clients
   end
@@ -43,4 +45,11 @@ class ClientsController < ApplicationController
   def clients_params
     params.require(:client).permit(:name, :contact)
   end
+
+  def transporter_redirect
+    if current_user.transporter?
+      redirect_to clients_path
+    end
+  end
+
 end

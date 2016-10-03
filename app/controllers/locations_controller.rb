@@ -2,6 +2,7 @@
 class LocationsController < ApplicationController
 
   before_action :load_client
+  before_action :transporter_redirect, except: :index
 
   def index
     @locations = @client.locations
@@ -68,6 +69,12 @@ class LocationsController < ApplicationController
 
   def load_client
     @client = Client.find(params[:client_id])
+  end
+
+  def transporter_redirect
+    if current_user.transporter?
+      redirect_to client_locations_path(@client.id)
+    end
   end
 
 end

@@ -3,12 +3,12 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  belongs_to :company
+  belongs_to :company, optional: true
 
   ROLE_ADMIN ="admin"
   ROLE_TRANSPORTER = "transporter"
   ROLE_CLIENT = "client"
-  
+
   def clients
     company.clients
   end

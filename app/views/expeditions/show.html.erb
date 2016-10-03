@@ -11,12 +11,12 @@
   </div>
 
   <div class="col-md-2">
-    <%= link_to('Delivered', client_expedition_path(@client, @expedition, expedition: {state: 'delivered'}), method: :patch, class: 'btn btn-default') %>
+    <%= link_to('Delivered', client_expedition_path(@client, @expedition, expedition: {state: 'delivered'}), method: :patch, class: 'btn btn-default btn-lg') %>
   </div>
   <div class="col-md-2">
-    <%= link_to('Picked Up', client_expedition_path(@client, @expedition, expedition: {state: 'picked_up'}), method: :patch, class: 'btn btn-default') %>
+    <%= link_to('Picked Up', client_expedition_path(@client, @expedition, expedition: {state: 'picked_up'}), method: :patch, class: 'btn btn-default btn-lg') %>
   </div>
   <div class="col-md-2">
-    <%= link_to('Canceled', client_expedition_path(@client, @expedition, expedition: {state: 'canceled'}), method: :patch, class: 'btn btn-default') %>
+    <%= link_to('Canceled', client_expedition_path(@client, @expedition, expedition: {state: 'canceled'}), method: :patch, class: 'btn btn-default btn-lg') %>
   </div>
 </div>

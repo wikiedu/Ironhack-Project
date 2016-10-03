@@ -1,6 +1,8 @@
 class ExpeditionsController < ApplicationController
 
   before_action :load_client
+  before_action :transporter_redirect, except: [:index, :show, :update]
+
 
   def index
     @expeditions = @client.expeditions
@@ -82,4 +84,12 @@ class ExpeditionsController < ApplicationController
   def load_client
     @client = Client.find(params[:client_id])
   end
+
+  def transporter_redirect
+    if current_user.transporter?
+      redirect_to client_expeditions_path(@client.id)
+    end
+  end
+
+
 end

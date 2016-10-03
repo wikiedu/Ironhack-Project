@@ -5,9 +5,16 @@
 <div class="div-scroll">
   <% @clients.each do |client| %>
     <li>
-      <%= link_to client.name, client_locations_path(client.id), method: :get%> | <%= link_to 'Edit', edit_client_path(client.id), method: :get %> | <%= link_to 'X', client_path(client.id), method: :delete,data: {confirm: "Are you sure?"}%>
+      <%= link_to client.name, client_locations_path(client.id), method: :get%>
+      <% if current_user.admin? %>
+        | <%= link_to 'Edit', edit_client_path(client.id), method: :get %> | <%= link_to 'X', client_path(client.id), method: :delete,data: {confirm: "Are you sure?"}%>
+      <% end %>
     </li>
   <% end %>
 </div>
+<% if current_user.admin? %>
+  <%= link_to 'Add new Client', new_client_path, method: :get %>
+<% end %>
+<% if current_user.admin? %>
 
-<%= link_to 'Add new Client', new_client_path, method: :get %>
+<% end %>

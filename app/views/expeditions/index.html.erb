@@ -1,17 +1,22 @@
 <h1 id="model-name">List of Expeditions:</h1>
 <div class="row">
+  <% if current_user.admin? %>
+    <div class="col-md-6">
+    <h4>Import:</h4>
+    <%= link_to 'Add new Expedition', new_client_expedition_path(@client), method: :get %>
+      <%= form_tag import_client_expeditions_path(@client), multipart: true do %>
+        <%= file_field_tag :file%> <%= submit_tag "Import file" %>
+      <% end %>
+      <br>
+    </div>
+  <% end %>
   <div class="col-md-6">
-  <h4>Import:</h4>
-  <%= link_to 'Add new Expedition', new_client_expedition_path(@client), method: :get %>
-    <%= form_tag import_client_expeditions_path(@client), multipart: true do %>
-      <%= file_field_tag :file%> <%= submit_tag "Import file" %>
+    <% if current_user.admin? %>
+      <%= link_to('Print QR Expeditions', print_client_expeditions_path(@client), method: :get, target: "_blank", class: 'btn btn-default') %>
+      <br>
     <% end %>
-    <br>
-  </div>
-  <div class="col-md-6">
-    <%= link_to('Print QR Expeditions', print_client_expeditions_path(@client), method: :get, target: "_blank", class: 'btn btn-default') %>
-    <br>
     <%= button_to('Go to Locations', client_locations_path(@client), method: :get, class: 'btn btn-default') %>
+    <br>
   </div>
 </div>
 <div class="table-responsive">
@@ -19,9 +24,11 @@
     <thead class="thead-inverse">
       <tr>
         <th>View</th>
-        <th>Edit</th>
-        <th>Delete</th>
-        <th>QR Generate</th>
+        <% if current_user.admin? %>
+          <th>Edit</th>
+          <th>Delete</th>
+          <th>QR Generate</th>
+        <% end %>
         <th>Origin Location</th>
         <th>Destination Location</th>
         <th>Date</th>
@@ -33,9 +40,11 @@
       <% @expeditions.each do |expedition| %>
         <tr>
           <td><%= link_to 'View', client_expedition_path(@client, expedition.id), method: :get %></td>
-          <td><%= link_to 'Edit', edit_client_expedition_path(@client, expedition.id), method: :get %></td>
-          <td><%= link_to 'X', client_expedition_path(@client, expedition.id), method: :delete, data: {confirm: "Are you sure?"} %></td>
-          <td class="qr-generation"><%= link_to('QR', print_client_expedition_path(@client, expedition), method: :get, target: "_blank") %></td>
+          <% if current_user.admin? %>
+            <td><%= link_to 'Edit', edit_client_expedition_path(@client, expedition.id), method: :get %></td>
+            <td><%= link_to 'X', client_expedition_path(@client, expedition.id), method: :delete, data: {confirm: "Are you sure?"} %></td>
+            <td class="qr-generation"><%= link_to('QR', print_client_expedition_path(@client, expedition), method: :get, target: "_blank") %></td>
+          <% end %>
           <td><%= @client.locations.find_by(id: expedition.origin_location_id).name %></td>
           <td><%= @client.locations.find_by(id: expedition.destination_location_id).name %></td>
           <td><%= expedition.date %></td>
