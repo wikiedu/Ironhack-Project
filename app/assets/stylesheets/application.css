@@ -23,6 +23,12 @@
   height: 70px;
   overflow: scroll;
 }
+.navbar-default .navbar-brand {
+  font-family: raleway-bold;
+    color: #00B5E2;
+    font-size: 40px;
+}
+
 
 #appName {
   margin-top: 2px;
@@ -36,8 +42,12 @@
 #user_info {
   text-align: right;
 }
+
+body { padding-top: 50px; }
+
 .color {
-  color: #00B5E2
+  color: #00B5E2;
+  margin-left: 30%;
 }
 /*.fixed-header {
   position: fixed;

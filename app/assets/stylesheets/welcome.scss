@@ -5,24 +5,37 @@
 @import "bootstrap";
 @import "font-awesome";
 
-.titles {
-  margin-top: 200px;
-
+.title1 {
+  margin-top: 50px;
 }
-
+.title2 {
+  margin-top: 360px;
+}
+#landing-titles {
+  text-align: center;
+  font-family: raleway-bold;
+}
 #title {
   margin-top: 2px;
   text-align: center;
   font-family: raleway-bold;
-  color: white;
+  color: black;
 }
 #landing-image {
-    background-image: url(/assets/landing.jpg);
+    background-image: url(/assets/fondo.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 
-    height: 400px;
+    height: 570px;
+}
+
+.separation{
+  height: 20px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #00B5E2;
 }
 #web-app-image {
   height: 300px;
@@ -35,7 +48,22 @@
     visibility: hidden;
   }
 }
-#degraded-background {
-  background-image: url(/assets/degraded.jpg);
-
+.pricing-title {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-family: raleway-bold;
+  color: black;
+}
+.box-border{
+  border: 1px solid black;
+  margin: 0;
+  padding: 0;
+  height: 200px;
+}
+.header-pricing {
+  background-color: #00B5E2;
+}
+ul {
+  padding: 0;
 }
