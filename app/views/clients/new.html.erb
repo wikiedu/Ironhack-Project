@@ -1,14 +1,16 @@
 <h1>Create a new Client</h1>
 
-<%= form_for @client do |f| %>
-  <%= f.label :name %>:
-  <%= f.text_field :name %><br />
+  <%= form_for @client do |f| %>
+    <%= f.label :name, class: 'form-group'%>:
+    <%= f.text_field :name %><br />
 
-  <%= f.label :contact %>:
-  <%= f.text_field :contact %><br />
+    <%= f.label :contact,  class: 'form-group'%>:
+    <%= f.text_field :contact %><br />
 
-  <%= f.submit %>
-<% end %>
+    <%= f.submit class: 'btn btn-default'%>
+  <% end %>
+
+
 
 <br>
 <%= button_to('CANCEL', clients_path, method: :get, class: 'btn btn-danger') %>

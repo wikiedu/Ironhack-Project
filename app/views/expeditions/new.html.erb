@@ -4,19 +4,18 @@
 <%= form_for @expedition, url: client_expeditions_path(@client) do |f| %>
 
   <%= f.label :origin_location %>:
-  <%= f.select :origin_location_id, @client.locations.collect { |p| [ p.name, p.id ] }, include_blank: true %> <br>
+  <%= f.select :origin_location_id, @client.locations.collect { |p| [ p.name, p.id ] }, include_blank: true , class:'form-group form-control'%>
 
   <%= f.label :destination_location %>:
-  <%= f.select :destination_location_id, @client.locations.collect { |p| [ p.name, p.id ] }, include_blank: true %> <br>
-
+  <%= f.select :destination_location_id, @client.locations.collect { |p| [ p.name, p.id ] }, include_blank: true , class:'form-group form-control'%>
+<br>
   <%= f.label :date %>:
-  <%= f.date_field :date %><br />
+  <%= f.date_field :date, class:'form-group form-control' %>
 
   <%= f.label :weight %>:
-  <%= f.text_field :weight %><br />
+  <%= f.text_field :weight , class:'form-group form-control'%>
 
 
-  <%= f.submit %>
+  <%= f.submit class:'btn btn-default btn-success'%>
 <% end %>
-<br>
 <%= button_to('CANCEL', client_expeditions_path(@client), method: :get, class: 'btn btn-danger') %>

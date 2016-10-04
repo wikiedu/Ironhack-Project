@@ -1,20 +1,22 @@
 <h1>Edit an Expedition</h1>
+<div class="form-horizontal">
+  <%= form_for @current_expedition, method: :patch, url: client_expedition_path(@client, params[:id]) do |f| %>
+    <%= f.label :origin_location %>:
+    <%= f.select :origin_location_id, @client.locations.collect { |p| [ p.name, p.id ] }, include_blank: true , class:'form-group form-control'%>
 
-<%= form_for @current_expedition, method: :patch, url: client_expedition_path(@client, params[:id]) do |f| %>
-  <%= f.label :origin_location %>:
-  <%= f.select :origin_location_id, @client.locations.collect { |p| [ p.name, p.id ] }, include_blank: true %> <br>
+    <%= f.label :destination_location %>:
+    <%= f.select :destination_location_id, @client.locations.collect { |p| [ p.name, p.id ] }, include_blank: true , class:'form-group form-control'%> <br>
 
-  <%= f.label :destination_location %>:
-  <%= f.select :destination_location_id, @client.locations.collect { |p| [ p.name, p.id ] }, include_blank: true %> <br>
+    <%= f.label :date %>:
+    <%= f.date_field :date , class:'form-group form-control'%>
 
-  <%= f.label :date %>:
-  <%= f.date_field :date %><br />
+    <%= f.label :weight %>:
+    <%= f.text_field :weight , class:'form-group form-control'%>
 
-  <%= f.label :weight %>:
-  <%= f.text_field :weight %><br />
+    <%= f.label :state %>:
+    <%= f.select :state, @states.each { |state| state }, include_blank: true , class:'form-group form-control'%>
 
-  <%= f.label :state %>:
-  <%= f.select :state, @states.each { |state| state }, include_blank: true %><br />
-
-  <%= f.submit %>
-<% end %>
+    <%= f.submit class:'btn btn-default btn-success' %>
+  <% end %>
+</div>
+<%= button_to('CANCEL', client_expeditions_path(@client), method: :get, class: 'btn btn-danger') %>

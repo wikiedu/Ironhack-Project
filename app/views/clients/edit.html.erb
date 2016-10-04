@@ -7,5 +7,8 @@
   <%= f.label :contact %>:
   <%= f.text_field :contact %><br />
 
-  <%= f.submit %>
+  <%= f.submit class: 'btn btn-default btn-success' %>
 <% end %>
+
+<br>
+<%= button_to('CANCEL', clients_path, method: :get, class: 'btn btn-danger') %>

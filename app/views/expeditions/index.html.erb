@@ -2,10 +2,10 @@
 <div class="row">
   <% if current_user.admin? %>
     <div class="col-md-6">
-    <h4>Import:</h4>
-    <%= link_to 'Add new Expedition', new_client_expedition_path(@client), method: :get, class: 'btn btn-primary btn-sm' %>
+      <%= link_to 'Add new Expedition', new_client_expedition_path(@client), method: :get, class: 'btn btn-primary btn-sm' %>
+        <h4>Import File:</h4>
       <%= form_tag import_client_expeditions_path(@client), multipart: true do %>
-        <%= file_field_tag :file%> <%= submit_tag "Import file" %>
+        <%= file_field_tag :file%> <%= submit_tag "Import file", class:'btn btn-default btn-success' %>
       <% end %>
       <br>
     </div>
@@ -15,7 +15,7 @@
       <%= link_to('Print QR Expeditions', print_client_expeditions_path(@client), method: :get, target: "_blank", class: 'btn btn-primary') %>
       <br>
     <% end %>
-    <%= button_to('Go to Locations', client_locations_path(@client), method: :get, class: 'btn btn-primary') %>
+    <%= button_to('Go to Locations', client_locations_path(@client), method: :get, class: 'btn btn-primary btn-warning') %>
     <br>
   </div>
 </div>
