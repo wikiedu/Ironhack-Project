@@ -34,6 +34,7 @@
         <th>Date</th>
         <th>Weight</th>
         <th>State</th>
+        <th>Coordinates</th>
       </tr>
     </thead>
     <tbody>
@@ -50,8 +51,11 @@
           <td><%= expedition.date %></td>
           <td><%= expedition.weight %></td>
           <td><%= expedition.state %></td>
+          <td><%= expedition.geolocation %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
 </div>
+
+<%= link_to('Map Expeditions', mapping_client_expeditions_path(@client), class: 'btn btn-primary') %>

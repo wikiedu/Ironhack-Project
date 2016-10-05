@@ -1,0 +1,27 @@
+<h3>Today Expeditions Mapped:</h3>
+
+<div id="map" style="width: 80%; height: 500px"></div>
+    <script>
+
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 10,
+          center: {lat: 41.383502, lng: 2.160617}
+        });
+
+        <% @expeditions.each do |expedition| %>
+        <% coordinates = expedition.geolocation.split(',') %>
+          var myLatLng = {lat: <%=coordinates[0]%>, lng: <%=coordinates[1]%>};
+
+
+          new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: 'Hello World!'
+          });
+        <% end%>
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBMH4O5I2hIZokyziY_CyCC-SMHkvafFV8&callback=initMap">
+    </script>

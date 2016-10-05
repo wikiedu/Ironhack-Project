@@ -45,6 +45,7 @@ class ExpeditionsController < ApplicationController
     if @current_expedition.update_attributes(expeditions_params_update_state)
       redirect_to client_expeditions_path(@client.id)
     else
+      @states = [Expedition::STATE_DELIVERED, Expedition::STATE_PICKEDUP, Expedition::STATE_CANCELED]
       render 'edit'
     end
 
@@ -68,6 +69,10 @@ class ExpeditionsController < ApplicationController
       end
     end
     redirect_to client_expeditions_path(@client.id), notice: "Expeditions imported correctly"
+  end
+
+  def mapping
+    @expeditions = Expedition.where(date: Date.today)
   end
 
 

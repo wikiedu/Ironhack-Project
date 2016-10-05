@@ -8,6 +8,7 @@ gem 'rqrcode_png'
 # necesita rails 4.2.6
 gem "font-awesome-rails"
 gem "mail_form"
+gem 'underscore-rails'
 # gem 'hobo', '~> 2.2', '>= 2.2.6'
 gem 'carrierwave', '~> 0.11.2'
 gem 'kaminari', '~> 0.17.0'

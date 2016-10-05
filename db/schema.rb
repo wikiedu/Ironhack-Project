@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160929160939) do
+ActiveRecord::Schema.define(version: 20161005100417) do
 
   create_table "clients", force: :cascade do |t|
     t.string   "name"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20160929160939) do
     t.datetime "updated_at",              null: false
     t.date     "date"
     t.integer  "client_id"
+    t.string   "geolocation"
     t.index ["client_id"], name: "index_expeditions_on_client_id"
     t.index ["destination_location_id"], name: "index_expeditions_on_destination_location_id"
     t.index ["origin_location_id"], name: "index_expeditions_on_origin_location_id"
