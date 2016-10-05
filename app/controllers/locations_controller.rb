@@ -43,7 +43,7 @@ class LocationsController < ApplicationController
   end
 
   def import
-    CSV.foreach(params[:file].path, col_sep:  ";") do |row|
+    CSV.foreach(params[:file].path, col_sep:  ";", headers: true) do |row|
       internal_code = row[0]
       name = row[1]
       direction = row[2]

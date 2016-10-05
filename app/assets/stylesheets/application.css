@@ -28,7 +28,9 @@
     color: #00B5E2;
     font-size: 40px;
 }
-
+#client {
+  text-align: right;
+}
 
 #appName {
   margin-top: 2px;

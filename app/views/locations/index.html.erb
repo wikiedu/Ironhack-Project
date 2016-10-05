@@ -11,14 +11,14 @@
     </div>
   <% end %>
 
-  <div class="col-md-6">
+  <div class="col-md-3">
     <h3>Expeditions:</h3>
     <%= link_to 'See all the expeditions', client_expeditions_path(client_id: @client.id), method: :get, class: 'btn btn-primary btn-xs'%>
-      <br>
-    <%= button_to('Go to Clients', clients_path, method: :get, class: 'btn btn-primary btn-warning') %>
-    <br>
   </div>
-
+  <div class="col-md-3">
+    <h5 id="client"><%= @client.name %></h5>
+      <%= button_to('Go to Clients', clients_path, method: :get, class: 'btn btn-primary btn-danger',style: "float: right;") %>
+  </div>
 </div>
 
 <div class="table-responsive">
@@ -49,7 +49,7 @@
           <td><%= link_to 'Edit', edit_client_location_path(@client, location), method: :get %></td>
           <td><%= link_to 'X', client_location_path(@client, location), method: :delete, data: {confirm: "Are you sure?"}%></td>
         <% end %>
-        <td><%= link_to 'View Exp.', client_expeditions_path(@client, location_id: location.id), method: :get %></td>
+        <td><%= link_to 'View', client_expeditions_path(@client, location_id: location.id), method: :get %></td>
         <td><%= location.internal_code %></td>
         <td><%= location.name %></td>
         <td><%= location.direction %></td>

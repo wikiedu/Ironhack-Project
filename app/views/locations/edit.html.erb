@@ -1,5 +1,5 @@
 <h1>Edit a Location</h1>
-<div class="form-horizontal">
+<div class="form-horizontal col-md-6">
   <%= form_for @current_location, url: client_location_path(params[:client_id]) do |f| %>
     <%= f.label :name %>:
     <%= f.text_field :name, class:'form-group form-control' %><br />
@@ -27,6 +27,6 @@
 
     <%= f.submit class: 'btn btn-default btn-success'%>
   <% end %>
+  <br>
+  <%= button_to('CANCEL', client_locations_path(@client), method: :get, class: 'btn btn-danger') %>
 </div>
-<br>
-<%= button_to('CANCEL', client_locations_path(@client), method: :get, class: 'btn btn-danger') %>

@@ -1,4 +1,4 @@
-<h1 id="model-name">List of Expeditions:</h1>
+<h1 id="model-name">Expeditions by locations:</h1>
 <div class="row">
   <% if current_user.admin? %>
     <div class="col-md-6">
@@ -10,13 +10,18 @@
       <br>
     </div>
   <% end %>
-  <div class="col-md-6">
+  <div class="col-md-3">
     <% if current_user.admin? %>
       <%= link_to('Print QR Expeditions', print_client_expeditions_path(@client), method: :get, target: "_blank", class: 'btn btn-primary') %>
       <br>
     <% end %>
     <%= button_to('Go to Locations', client_locations_path(@client), method: :get, class: 'btn btn-primary btn-warning') %>
     <br>
+  </div>
+
+  <div class="col-md-3">
+    <h5 id="client"><%= @client.name %></h5>
+      <%= button_to('Go to Clients', clients_path, method: :get, class: 'btn btn-primary btn-danger',style: "float: right;") %>
   </div>
 </div>
 <div class="table-responsive">
