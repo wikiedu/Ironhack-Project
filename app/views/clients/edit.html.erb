@@ -1,5 +1,4 @@
 <h1>Edit a Client</h1>
-
 <%= form_for @current_client, method: :patch, url: client_path(params[:id]) do |f| %>
   <%= f.label :name %>:
   <%= f.text_field :name %><br />

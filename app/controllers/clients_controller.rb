@@ -43,7 +43,7 @@ class ClientsController < ApplicationController
   private
 
   def clients_params
-    params.require(:client).permit(:name, :contact).merge(id: params[:id], company_id: 1)
+    params.require(:client).permit(:name, :contact).merge(company_id: current_user.company.id)
   end
 
   def transporter_redirect
