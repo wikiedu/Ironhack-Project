@@ -1,6 +1,6 @@
 <h1>Create a new Expedition</h1>
 
-
+<%= @expedition.errors.inspect%>
 <%= form_for @expedition, url: client_expeditions_path(@client) do |f| %>
 
   <%= f.label :origin_location %>:

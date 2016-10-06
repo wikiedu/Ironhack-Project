@@ -15,12 +15,10 @@ class Expedition < ApplicationRecord
     STATE_DELIVERY ="delivery"
     STATE_CANCELED ="canceled"
 
-    before_save :default_values
+    before_validation :default_values
 
-  def default_values
-    self.state ||= STATE_UNDELIVERED
-  end
-
-
+    def default_values
+      self.state ||= STATE_UNDELIVERED
+    end
 
 end

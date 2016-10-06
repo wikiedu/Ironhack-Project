@@ -9,8 +9,17 @@ class User < ApplicationRecord
   ROLE_TRANSPORTER = "transporter"
   ROLE_CLIENT = "client"
 
+
+  before_save :default_values
+
+  def default_values
+    self.role ||= ROLE_ADMIN
+  end
+
   def clients
-    company.clients
+    if company
+      company.clients
+    end
   end
 
   def admin?

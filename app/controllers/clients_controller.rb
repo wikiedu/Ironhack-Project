@@ -3,7 +3,9 @@ class ClientsController < ApplicationController
   before_action :transporter_redirect, except: :index
 
   def index
-    @clients = current_user.clients
+    if current_user.clients
+      @clients = current_user.clients
+    end
   end
 
   def new

@@ -3,13 +3,15 @@
       <h1 id="model-name">List of clients:</h1>
     </header>
 <div>
-  <% @clients.each do |client| %>
-    <ul>
-      <h3><%= link_to client.name, client_locations_path(client.id), method: :get%></h3>
-      <% if current_user.admin? %>
-        | <%= link_to 'Edit', edit_client_path(client.id), method: :get %> | <%= link_to 'X', client_path(client.id), method: :delete,data: {confirm: "Are you sure?"}%>
-      <% end %>
-    </ul>
+  <% if @clients %>
+    <% @clients.each do |client| %>
+      <ul>
+        <h3><%= link_to client.name, client_locations_path(client.id), method: :get%></h3>
+        <% if current_user.admin? %>
+          | <%= link_to 'Edit', edit_client_path(client.id), method: :get %> | <%= link_to 'X', client_path(client.id), method: :delete,data: {confirm: "Are you sure?"}%>
+        <% end %>
+      </ul>
+    <% end %>
   <% end %>
 </div>
 <% if current_user.admin? %>
